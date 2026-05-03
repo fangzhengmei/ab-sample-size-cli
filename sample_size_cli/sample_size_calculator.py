@@ -78,15 +78,15 @@ class SampleSizeCalculator:
         z_beta = stats.norm.ppf(power)
         
         p_pooled = (baseline_cr + expected_cr) / 2
-        pooled_variance = p_pooled * (1 - p_pooled) * 2
         
+        pooled_se = math.sqrt(2 * p_pooled * (1 - p_pooled))
         effect_se = math.sqrt(
             baseline_cr * (1 - baseline_cr) + 
             expected_cr * (1 - expected_cr)
         )
         
         sample_size = (
-            (z_alpha * math.sqrt(pooled_variance) + z_beta * math.sqrt(effect_se)) ** 2
+            (z_alpha * pooled_se + z_beta * effect_se) ** 2
         ) / (absolute_effect ** 2)
         
         rounded_size = math.ceil(sample_size)

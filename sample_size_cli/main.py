@@ -19,8 +19,8 @@ def main():
               help="显著性水平 α (默认: 0.05)")
 @click.option("--power", "-p", default=0.8, type=float,
               help="统计功效 1-β (默认: 0.8)")
-@click.option("--absolute/--relative", "-r/-a", default=False,
-              help="MDE 是绝对效应还是相对效应 (默认: 相对效应)")
+@click.option("--absolute/--relative", "-e/-R", default=False,
+              help="MDE 是绝对效应 (-e) 还是相对效应 (-R，默认)")
 @click.option("--test-type", "-t", type=click.Choice(["one-sided", "two-sided"]),
               default="two-sided", help="检验类型 (默认: two-sided)")
 @click.option("--name", "-n", help="实验名称 (可选)")
